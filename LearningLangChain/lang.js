@@ -14,7 +14,7 @@ const messages = [
 
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 
-const systemTemplate = "Create a recipe for the given food";
+const systemTemplate = "Translate the following from English into {language}";
 
 const promptTemplate = ChatPromptTemplate.fromMessages([
   ["system", systemTemplate],
@@ -23,7 +23,7 @@ const promptTemplate = ChatPromptTemplate.fromMessages([
 
 const promptValue = await promptTemplate.invoke({
   language: "italian",
-  text: "sushi",
+  text: "hi",
 });
 
 promptValue;
@@ -31,4 +31,4 @@ promptValue;
 promptValue.toChatMessages();
 
 const response = await model.invoke(promptValue);
-console.log(`${response.content}`);
+console.log(response.content);
